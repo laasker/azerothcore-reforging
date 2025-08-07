@@ -42,6 +42,9 @@ private:
 
         for (uint8 slot = EQUIPMENT_SLOT_START; slot < EQUIPMENT_SLOT_END; slot++)
         {
+            if (slot == EQUIPMENT_SLOT_BODY || slot == EQUIPMENT_SLOT_TABARD)
+                continue;
+
             Item* item = sItemReforge->GetItemInSlot(player, slot);
             std::ostringstream oss;
             oss << sItemReforge->GetSlotIcon(slot);
@@ -158,6 +161,9 @@ private:
 
         for (uint8 slot = EQUIPMENT_SLOT_START; slot < EQUIPMENT_SLOT_END; slot++)
         {
+            if (slot == EQUIPMENT_SLOT_BODY || slot == EQUIPMENT_SLOT_TABARD)
+                continue;
+
             Item* item = sItemReforge->GetItemInSlot(player, slot);
             std::ostringstream oss;
             oss << sItemReforge->GetSlotIcon(slot);
@@ -229,7 +235,7 @@ public:
             AddGossipItemFor(player, GOSSIP_ICON_BATTLE, "Select equipment slot to reforge", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 1);
             AddGossipItemFor(player, GOSSIP_ICON_BATTLE, "Remove reforge from items", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 3);
         }
-        AddGossipItemFor(player, GOSSIP_ICON_CHAT, "Nevermind", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 2);
+        //AddGossipItemFor(player, GOSSIP_ICON_CHAT, "Nevermind", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 2);
         SendGossipMenuFor(player, DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
         return true;
     }
